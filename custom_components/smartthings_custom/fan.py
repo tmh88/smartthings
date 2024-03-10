@@ -32,11 +32,9 @@ async def async_setup_entry(
     """Add fans for a config entry."""
     broker = hass.data[DOMAIN][DATA_BROKERS][config_entry.entry_id]
     async_add_entities(
-        [
-            SmartThingsFan(device)
-            for device in broker.devices.values()
-            if broker.any_assigned(device.device_id, "fan")
-        ]
+        SmartThingsFan(device)
+        for device in broker.devices.values()
+        if broker.any_assigned(device.device_id, "fan")
     )
 
 
@@ -53,7 +51,9 @@ def get_capabilities(capabilities: Sequence[str]) -> Sequence[str] | None:
         Capability.fan_speed,
     ]
 
-    # If none of the optional capabilities are supported then error
+    # At least one of the optional capabilities must be supported
+    # to classify this entity as a fan.
+    # If they are not then return None and don't setup the platform.
     if not any(capability in capabilities for capability in optional):
         return None
 
