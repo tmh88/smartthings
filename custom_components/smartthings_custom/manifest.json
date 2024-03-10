@@ -1,9 +1,9 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "domain": "smartthings_custom",
   "name": "SmartThings Custom",
   "after_dependencies": ["cloud"],
-  "codeowners": ["@andrewsayre"],
+  "codeowners": ["@tmh88"],
   "config_flow": true,
   "dependencies": ["webhook"],
   "dhcp": [
