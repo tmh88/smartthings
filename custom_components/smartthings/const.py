@@ -4,7 +4,7 @@ import re
 
 from homeassistant.const import Platform
 
-DOMAIN = "smartthings"
+DOMAIN = "smartthings_custom"
 
 APP_OAUTH_CLIENT_NAME = "Home Assistant"
 APP_OAUTH_SCOPES = ["r:devices:*"]
